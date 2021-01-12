@@ -31,10 +31,10 @@ Below is the form of a single transaction object.
 ```
 
 
-| ENDPOINT | METHOD | DESCRIPTION         | PARAMETERS         |
-|----------|--------|---------------------|--------------------|
-| getFee   | POST   |   X                 |          Y         |
-| executeTx| POST   |   X                 |          Y         |
+| ENDPOINT | METHOD | DESCRIPTION                                    | PARAMETERS         |
+|----------|--------|------------------------------------------------|--------------------|
+| getFee   | POST   |   Returns the standard fee for the transaction.|          Y          |
+| executeTx| POST   |   Executes a transaction.                      |          Y         |
 
 
 **Sample Request**:
