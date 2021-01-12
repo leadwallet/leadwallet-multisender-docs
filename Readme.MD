@@ -35,4 +35,40 @@ Below is the form of a single transaction object.
 |----------|--------|---------------------|--------------------|
 | getFee   | POST   |   Returns the standard fee needed to execute a transaction. Note that this might not be the fee that the user would pay for the transaction executed as it is just an estimate.|<table>
 <tr><th>Parameter</th><th>In</th><th>Type</th><th>Description</th></tr>
-</table>                    |
+<tr><th>type</th><th>body</th><th>String</th><th>Coin type. e.g "eth", "bnb", "erc20"</th></tr>
+<tr><th>contractAddress</th><th>body</th><th>String</th><th>Contract address for ERC20 token. Note that this is only needed for ERC20 transactions. If it is included in a non-ERC20 transaction, it won't be used</th></tr>
+<tr><th>privateKey</th><th>body</th><th>String</th><th>Private key of user executing the transaction</th></tr>
+<tr><th>txns</th><th>body</th><th>Array<TransactionRequest></th><th>An array of transaction request objects. Please refer to details above</th></tr>
+</table>|
+| executeTx   | POST   |   Executes a multisender transaction |<table>
+<tr><th>Parameter</th><th>In</th><th>Type</th><th>Description</th></tr>
+<tr><th>type</th><th>body</th><th>String</th><th>Coin type. e.g "eth", "bnb", "erc20"</th></tr>
+<tr><th>contractAddress</th><th>body</th><th>String</th><th>Contract address for ERC20 token. Note that this is only needed for ERC20 transactions. If it is included in a non-ERC20 transaction, it won't be used</th></tr>
+<tr><th>privateKey</th><th>body</th><th>String</th><th>Private key of user executing the transaction</th></tr>
+<tr><th>txns</th><th>body</th><th>Array<TransactionRequest></th><th>An array of transaction request objects. Please refer to details above</th></tr>
+</table>|
+
+
+**Sample Request**:
+
+```json
+{
+ "type": "eth", // Coin type. User "erc20" for ERC20 tokens.
+ "contractAddress": "0x", // Contract address of ERC20 token. This would only be used if the coin type is "erc20". There is no need to include it if the transaction isn't an ERC20 transaction.
+ "privateKey": "0x", // Private key to sign the transaction. This is usually the private key of the user sending the transaction.
+ "txns": [
+  {
+ "recipient": "Address......", // Address of user receiving specific coin or token.
+ "amount": 10.0 // Amount to be sent to user. Note that this number should be in double precision (i.e in the form - 1.0) or an error would be thrown.
+  },
+  {
+ "recipient": "Address......", // Address of user receiving specific coin or token.
+ "amount": 10.0 // Amount to be sent to user. Note that this number should be in double precision (i.e in the form - 1.0) or an error would be thrown.
+  }
+ ] // Array of transaction request objects.
+}
+```
+
+**Currently supported coin types**:
+
+*eth*, *bnb*, *erc20*
