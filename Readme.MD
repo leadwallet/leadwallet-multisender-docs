@@ -33,13 +33,7 @@ Below is the form of a single transaction object.
 
 | ENDPOINT | METHOD | DESCRIPTION         | PARAMETERS         |
 |----------|--------|---------------------|--------------------|
-| getFee   | POST   |   Returns the standard fee needed to execute a transaction. Note that this might not be the fee that the user would pay for the transaction executed as it is just an estimate.| <table>
-<tr><th>Parameter</th><th>In</th><th>Type</th><th>Description</th></tr>
-<tr><td>type</td><td>body</td><td>String</td><td>Coin type. e.g "eth", "bnb", "erc20"</td></tr>
-<tr><td>contractAddress</td><td>body</td><td>String</td><td>Contract address for ERC20 token. Note that this is only needed for ERC20 transactions. If it is included in a non-ERC20 transaction, it won't be used</td></tr>
-<tr><td>privateKey</td><td>body</td><td>String</td><td>Private key of user executing the transaction</td></tr>
-<tr><td>txns</td><td>body</td><td>Array<TransactionRequest></td><td>An array of transaction request objects. Please refer to details above</td></tr>
-</table> |
+| getFee   | POST   |   Returns the standard fee needed to execute a transaction. Note that this might not be the fee that the user would pay for the transaction executed as it is just an estimate.| v |
 | executeTx   | POST   |   Executes a multisender transaction | <table>
 <tr><th>Parameter</th><th>In</th><th>Type</th><th>Description</th></tr>
 <tr><td>type</td><td>body</td><td>String</td><td>Coin type. e.g "eth", "bnb", "erc20"</td></tr>
